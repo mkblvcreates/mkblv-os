@@ -1,0 +1,17 @@
+# dependencies
+/node_modules
+/.yarn
+
+# build output
+/build
+/.docusaurus
+
+# IDE + system files
+.DS_Store
+.env
+.env.local
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
