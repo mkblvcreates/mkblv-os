@@ -1,0 +1,9 @@
+:root {
+  --ifm-color-primary: #0333FF;
+  --ifm-font-family-base: 'Courier New', monospace;
+}
+
+html {
+  background-color: #000;
+  color: #00bfff;
+}
