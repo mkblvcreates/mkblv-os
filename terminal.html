@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MKBLV OS Terminal</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000010;
+      color: #00bfff;
+      font-family: 'Courier New', monospace;
+      padding: 20px;
+      background-image: linear-gradient(transparent 97%, rgba(0, 191, 255, 0.15) 98%), linear-gradient(90deg, transparent 97%, rgba(0, 191, 255, 0.15) 98%);
+      background-size: 24px 24px;
+    }
+
+    .terminal {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border: 2px solid #0333ff;
+      box-shadow: 0 0 12px #0333ff;
+      border-radius: 12px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #03f8fc;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+    }
+
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      font-size: 1.2rem;
+    }
+
+    .input-wrapper span {
+      margin-right: 10px;
+    }
+
+    input[type="text"] {
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid #03f8fc;
+      color: #03f8fc;
+      outline: none;
+      flex: 1;
+      font-size: 1.2rem;
+    }
+
+    .output {
+      margin-top: 20px;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <h1>MKBLV OS // Terminal</h1>
+    <div class="input-wrapper">
+      <span>~/mkblv-os:</span>
+      <input id="commandInput" type="text" placeholder="type a command..." />
+    </div>
+    <div class="output" id="outputArea"></div>
+  </div>
+
+  <script>
+    const input = document.getElementById("commandInput");
+    const output = document.getElementById("outputArea");
+
+    const responses = {
+      help: `Available commands:\n~/listen\n~/cohesion\n~/atlas\n~/dropdock\n~/exit`,
+      "~/listen": "\n[Sound System Activated]\nLoading audio module...",
+      "~/cohesion": "\n[Cohesion Module]\nCommunity bridge and micro-activation tools.",
+      "~/atlas": "\n[Atlas Real Systems]\nReal estate deal flow synced.",
+      "~/dropdock": "\n[DropDock UI]\nCreative assets + campaign storage unlocked.",
+      exit: "\nExiting MKBLV OS... Goodbye, node."
+    };
+
+    input.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        const command = input.value.trim();
+        const response = responses[command] || `\nUnknown command: ${command}\nType 'help' for available commands.`;
+        output.textContent += `\n~/mkblv-os: ${command}\n${response}\n`;
+        input.value = "";
+        output.scrollTop = output.scrollHeight;
+      }
+    });
+  </script>
+</body>
+</html>
